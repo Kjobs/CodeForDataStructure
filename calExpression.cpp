@@ -25,7 +25,7 @@ struct numStack
 void MakeNull(STACK &S)
 {
   //char数组置空
-	S.top=maxlength;
+  	S.top=maxlength;
 }
 
 void MakeNull(numStack &S)
@@ -35,19 +35,19 @@ void MakeNull(numStack &S)
 }
 
 bool Empty(STACK S)
-{
+{ //判断char栈是否为空
 	if (S.top>maxlength-1)
-		return 1;
+		return true;
 	else 
-		return 0;
+		return false;
 }
 
 bool Empty(numStack S)
-{
+{ //判断double栈是否为空
 	if (S.top>maxlength-1)
-		return 1;
+		return true;
 	else 
-		return 0;
+		return false;
 }
 
 void PushNum(double x, numStack &S)
@@ -86,6 +86,7 @@ double PopNum(numStack & S)
 	   S.top=S.top+1;
 		return x;
 }
+
 /*设定各个运算符的优先级大小*/
 int  Priority(char op)
 {
@@ -157,7 +158,8 @@ void InfixtoPostfix(char infixstr[] , char poststr[],int n,int &m)
 		S.top=S.top+1;
 	}
 }
-/*定义一个取数的函数以便处理小数和多位数*/
+
+/*定义一个取数函数以便处理小数和多位数*/
 double Getnum(char str[],int *i)
 {
 	double n=0;
@@ -179,6 +181,7 @@ double Getnum(char str[],int *i)
 	}
 	return n;
 }
+
 /*函数GetPostVal求后缀表达式的值*/
 double GetPostVal(char poststr[],int m)
 {
@@ -239,13 +242,14 @@ double GetPostVal(char poststr[],int m)
 	return value;
 }
 
+
 int main()
 {
 	int n,i,m;//n为中缀表达式长度，m为后缀表达式长度
 	double result;
 	char    chr;
 	char    inExp[maxlength];        /*中缀表达式*/
-	char    postExp[maxlength];   /*后缀表达式*/
+	char    postExp[maxlength];      /*后缀表达式*/
 	chr='y';
 	while (chr =='y'||chr=='Y')
 	{
@@ -257,15 +261,19 @@ int main()
 		m=0;
 		i=0;
 		//计算中缀表达式长度n
-	while (inExp[i] != '\0')
-		i++;
-	n=i;
-    InfixtoPostfix(inExp,postExp,n,m);
-	for (i=0;i<m;i++)
-	cout<<postExp[i];
-	cout<<endl;
-	result = GetPostVal(postExp,m );
-	cout<<result<<endl;
+		while (inExp[i] != '\0')
+			i++;
+		n=i;
+		
+		 InfixtoPostfix(inExp,postExp,n,m); //中缀转后缀
+	    
+		for (i=0;i<m;i++)
+		   cout<<postExp[i];
+		cout<<endl;
+		
+		result = GetPostVal(postExp,m );//求值
+		
+		cout<<result<<endl;
 	}	
 	return 0;
 }
