@@ -1,5 +1,5 @@
-#ifndef MERGESORT_H
-#define MERGESORT_H
+#ifndef MERGE_SORT_H
+#define MERGE_SORT_H
 
 #include <iostream>
 #include "TheSameFunc.h"
