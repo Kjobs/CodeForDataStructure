@@ -1,5 +1,5 @@
-#ifndef QUICKSORT_H
-#define QUICKSORT_H
+#ifndef QUICK_SORT_H
+#define QUICK_SORT_H
 
 #include <iostream>
 #include "TheSameFunc.h"
