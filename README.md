@@ -1,2 +1,2 @@
-# CodeForDataStructure
-Some code of practicing for DataStructure
+# Code of Data-Structure
+Some code of practicing for Data-Structure
