@@ -9,22 +9,22 @@ using namespace std;
 
 struct Enode
 {
-	int ivex;//»¡ËùÖ¸ÏòµÄ¶¥µãÎ»ÖÃ
-	Enode  *nextEdge;//Ö¸ÏòÏÂÒ»Ìõ»¡µÄÖ¸Õë
+	int ivex;//å¼§æ‰€æŒ‡å‘çš„é¡¶ç‚¹ä½ç½®
+	Enode  *nextEdge;//æŒ‡å‘ä¸‹ä¸€æ¡å¼§çš„æŒ‡é’ˆ
 };
 
 struct Edge
 {
 	int weight;
-	int v1;//Ö¸Ïò±ßµÄ½áµã
-	int v2;//±ßÖ¸ÏòµÄ½áµã
+	int v1;//æŒ‡å‘è¾¹çš„ç»“ç‚¹
+	int v2;//è¾¹æŒ‡å‘çš„ç»“ç‚¹
 };
 
 template<class T>
 struct Vnode
 {
 	T data;
-	Enode *firstEdge;//¶¥µãÖ¸ÏòµÄµÚÒ»Ìõ»¡
+	Enode *firstEdge;//é¡¶ç‚¹æŒ‡å‘çš„ç¬¬ä¸€æ¡å¼§
 };
 
 template<class T>
@@ -42,12 +42,12 @@ public:
 	void BFS();
 
 //protected:
-	int Vnum;				//Í¼µÄ¶¥µãÊıÄ¿
-	T vexs[MAX];			//¶¥µãÊı×é
-	int Enum;				//Í¼µÄ±ßµÄÊıÄ¿
-	T edges[MAX][2];	//±ßµÄÊı×é
-	Edge Wedge[MAX];//´øÈ¨Öµ±ß
-	Vnode<T> mVexs[MAX];//ÁÚ½Ó±íAdjListµÄ¶¥µã½á¹¹ÌåÊı×é
+	int Vnum;				//å›¾çš„é¡¶ç‚¹æ•°ç›®
+	T vexs[MAX];			//é¡¶ç‚¹æ•°ç»„
+	int Enum;				//å›¾çš„è¾¹çš„æ•°ç›®
+	T edges[MAX][2];	//è¾¹çš„æ•°ç»„
+	Edge Wedge[MAX];//å¸¦æƒå€¼è¾¹
+	Vnode<T> mVexs[MAX];//é‚»æ¥è¡¨AdjListçš„é¡¶ç‚¹ç»“æ„ä½“æ•°ç»„
 	void DFS(int i, int *visited, Vnode<T> mVexs[]);
 };
 
@@ -55,14 +55,14 @@ template<class T>
 UGraph<T>::UGraph()
 {
 	int i;
-	cout << "ÇëÊäÈë¶¥µãµÄÊıÄ¿:";
+	cout << "è¯·è¾“å…¥é¡¶ç‚¹çš„æ•°ç›®:";
 	cin >> Vnum;
-	cout << "ÇëÊäÈë±ßµÄÊıÄ¿:";
+	cout << "è¯·è¾“å…¥è¾¹çš„æ•°ç›®:";
 	cin >> Enum;
-	cout << "ÇëÒÀ´ÎÊäÈë¶¥µã: " << endl;
+	cout << "è¯·ä¾æ¬¡è¾“å…¥é¡¶ç‚¹: " << endl;
 	for (i = 0; i < Vnum; i++)
 		cin >> vexs[i];
-	cout << "ÇëÒÀ´ÎÊäÈë±ß¼°È¨Öµ:" << endl;
+	cout << "è¯·ä¾æ¬¡è¾“å…¥è¾¹åŠæƒå€¼:" << endl;
 	for (i = 0; i < Enum; i++)
 		cin >> edges[i][0] >> edges[i][1] >> Wedge[i].weight;
 }
@@ -128,13 +128,13 @@ void UGraph<T>::PrintGraph()
 {
 	int i;
 	Enode *p;
-	cout << "ÒÔÁì½Ó±íĞÎÊ½Êä³ö£º" << endl;
+	cout << "ä»¥é¢†æ¥è¡¨å½¢å¼è¾“å‡ºï¼š" << endl;
 	for (i = 0; i < Vnum; i++)
 	{
 		cout << "(" << i << ")" << mVexs[i].data;
 		p = mVexs[i].firstEdge;
 		if (p == NULL)
-			cout << "Null£¡";
+			cout << "Nullï¼";
 		while (p != NULL)
 		{
 			cout << "->" << mVexs[p->ivex].data;
