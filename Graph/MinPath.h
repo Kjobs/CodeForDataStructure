@@ -30,7 +30,7 @@ DGraph_prac<T>::DGraph_prac()
 
 template<class T>
 void DGraph_prac<T>::WeightM()
-{//È¨Öµ¾ØÕó
+{//æƒå€¼çŸ©é˜µ
 	int i, j;
 	int count = 0;
 	Enode *p;
@@ -60,8 +60,8 @@ void DGraph_prac<T>::floyd()
 	int tmp;
 	for (i = 0; i < g->Vnum; i++) {
 		for (j = 0; j < g->Vnum; j++) {
-			dist[i][j] = cost[i][j];   // "¶¥µãi"µ½"¶¥µãj"µÄÂ·¾¶³¤¶ÈÎª"iµ½jµÄÈ¨Öµ"¡£ 
-			path[i][j] = j;             // "¶¥µãi"µ½"¶¥µãj"µÄ×î¶ÌÂ·¾¶ÊÇ¾­¹ı¶¥µãj¡£
+			dist[i][j] = cost[i][j];   // "é¡¶ç‚¹i"åˆ°"é¡¶ç‚¹j"çš„è·¯å¾„é•¿åº¦ä¸º"iåˆ°jçš„æƒå€¼"ã€‚ 
+			path[i][j] = j;             // "é¡¶ç‚¹i"åˆ°"é¡¶ç‚¹j"çš„æœ€çŸ­è·¯å¾„æ˜¯ç»è¿‡é¡¶ç‚¹jã€‚
 		}
 	}
 	for (k = 0; k < g->Vnum; k++)
@@ -69,7 +69,7 @@ void DGraph_prac<T>::floyd()
 		for (i = 0; i < g->Vnum; i++)
 		{
 			for (j = 0; j < g->Vnum; j++)
-			{// Èç¹û¾­¹ıÏÂ±êÎªk¶¥µãÂ·¾¶±ÈÔ­Á½µã¼äÂ·¾¶¸ü¶Ì£¬Ôò¸üĞÂdist[i][j]ºÍpath[i][j]
+			{// å¦‚æœç»è¿‡ä¸‹æ ‡ä¸ºké¡¶ç‚¹è·¯å¾„æ¯”åŸä¸¤ç‚¹é—´è·¯å¾„æ›´çŸ­ï¼Œåˆ™æ›´æ–°dist[i][j]å’Œpath[i][j]
 				tmp = (dist[i][k] == infinity || dist[k][j] == infinity) ? infinity : (dist[i][k] + dist[k][j]);
 				if (dist[i][j] > tmp)
 				{
@@ -95,13 +95,13 @@ void DGraph_prac<T>::dijkstra()
 	int i, j, k;
 	int min;
 	int tmp;
-	int flag[MAX];// flag[i]=1±íÊ¾"¶¥µãvs"µ½"¶¥µãi"µÄ×î¶ÌÂ·¾¶ÒÑ³É¹¦»ñÈ¡¡£
+	int flag[MAX];// flag[i]=1è¡¨ç¤º"é¡¶ç‚¹vs"åˆ°"é¡¶ç‚¹i"çš„æœ€çŸ­è·¯å¾„å·²æˆåŠŸè·å–ã€‚
 	int vs = 0;
 	for (i = 0; i < g->Vnum; i++)
 	{
-		flag[i] = 0;                // ¶¥µãiµÄ×î¶ÌÂ·¾¶»¹Ã»»ñÈ¡µ½¡£
-		//prev[i] = 0;                // ¶¥µãiµÄÇ°Çı¶¥µãÎª0¡£
-		distd[i] = cost[vs][i];  // ¶¥µãiµÄ×î¶ÌÂ·¾¶Îª"¶¥µãvs"µ½"¶¥µãi"µÄÈ¨¡£
+		flag[i] = 0;                // é¡¶ç‚¹içš„æœ€çŸ­è·¯å¾„è¿˜æ²¡è·å–åˆ°ã€‚
+		//prev[i] = 0;                // é¡¶ç‚¹içš„å‰é©±é¡¶ç‚¹ä¸º0ã€‚
+		distd[i] = cost[vs][i];  // é¡¶ç‚¹içš„æœ€çŸ­è·¯å¾„ä¸º"é¡¶ç‚¹vs"åˆ°"é¡¶ç‚¹i"çš„æƒã€‚
 	}
 	flag[vs] = 1;
 	distd[vs] = infinity;
@@ -138,4 +138,4 @@ void DGraph_prac<T>::dijkstra()
 		cout << distd[i] <<" ";
 }
 
-#endif //µ¥Ô´×î¶ÌÂ·¾¶floydºÍdijkstraÊµÏÖ
+#endif //å•æºæœ€çŸ­è·¯å¾„floydå’Œdijkstraå®ç°
