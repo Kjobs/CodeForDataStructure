@@ -43,7 +43,7 @@ void printPath(int** path, int i, int j)
 	if (i == j)
 		cout << i << endl;
 	else if (path[i][j] == -1)
-		cout << "���ܵ��" << endl;
+		cout << "²»ÄÜµ½´ï£¡" << endl;
 	else
 	{
 		int k = path[i][j];
