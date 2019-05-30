@@ -16,36 +16,36 @@ public:
 	int getPosition(T val, int Vnum, Vnode<T> *mVexs);
 	void LinkLast(Enode *list, Enode *node);
 	void Tarjan(int i);
-	void solve();//ÓÃTajanËã·¨ÇóÓĞÏòÍ¼µÄÇ¿Á¬Í¨·ÖÁ¿
+	void solve();//ç”¨Tajanç®—æ³•æ±‚æœ‰å‘å›¾çš„å¼ºè¿é€šåˆ†é‡
 	bool IsStronglyCon();
 
 //protected:
-	int Vnum;				//Í¼µÄ¶¥µãÊıÄ¿
-	T vexs[MAX];			//¶¥µãÊı×é
-	int Enum;				//Í¼µÄ±ßµÄÊıÄ¿
-	T edges[MAX][2];	//±ßµÄÊı×é
-	Edge Wedge[MAX];//´øÈ¨Öµ±ß
-	int DFN[MAX];//Éî¶ÈÓÅÏÈ±àºÅ
+	int Vnum;				//å›¾çš„é¡¶ç‚¹æ•°ç›®
+	T vexs[MAX];			//é¡¶ç‚¹æ•°ç»„
+	int Enum;				//å›¾çš„è¾¹çš„æ•°ç›®
+	T edges[MAX][2];	//è¾¹çš„æ•°ç»„
+	Edge Wedge[MAX];//å¸¦æƒå€¼è¾¹
+	int DFN[MAX];//æ·±åº¦ä¼˜å…ˆç¼–å·
 	int Low[MAX];
 	int Index = 0;
-	int Bcnt;//Ç¿Á¬Í¨·ÖÁ¿¸öÊı
+	int Bcnt;//å¼ºè¿é€šåˆ†é‡ä¸ªæ•°
 	Stack<int> Stack;
 	bool InStack[MAX];
-	Vnode<T> mVexs[MAX];//ÁÚ½Ó±íAdjListµÄ¶¥µã½á¹¹ÌåÊı×é
+	Vnode<T> mVexs[MAX];//é‚»æ¥è¡¨AdjListçš„é¡¶ç‚¹ç»“æ„ä½“æ•°ç»„
 };
 
 template<class T>
 DGraph<T>::DGraph()
 {
 	int i;
-	cout << "ÇëÊäÈë¶¥µãµÄÊıÄ¿£º";
+	cout << "è¯·è¾“å…¥é¡¶ç‚¹çš„æ•°ç›®ï¼š";
 	cin >> Vnum;
-	cout << "ÇëÊäÈë±ßµÄÊıÄ¿£º";
+	cout << "è¯·è¾“å…¥è¾¹çš„æ•°ç›®ï¼š";
 	cin >> Enum;
-	cout << "ÇëÒÀ´ÎÊäÈë¶¥µã: " << endl;
+	cout << "è¯·ä¾æ¬¡è¾“å…¥é¡¶ç‚¹: " << endl;
 	for (i = 0; i < Vnum; i++)
 		cin >> vexs[i];
-	cout << "ÇëÒÀ´ÎÊäÈë±ß¼°È¨Öµ: " << endl;
+	cout << "è¯·ä¾æ¬¡è¾“å…¥è¾¹åŠæƒå€¼: " << endl;
 	for (i = 0; i < Enum; i++)
 		cin >> edges[i][0] >> edges[i][1] >> Wedge[i].weight;
 }
@@ -164,13 +164,13 @@ void DGraph<T>::PrintDGraph()
 {
 	int i;
 	Enode *p;
-	cout << "ÒÔÁì½Ó±íĞÎÊ½Êä³ö£º" << endl;
+	cout << "ä»¥é¢†æ¥è¡¨å½¢å¼è¾“å‡ºï¼š" << endl;
 	for (i = 0; i < Vnum; i++)
 	{
 		cout << "(" << i << ")" << mVexs[i].data;
 		p = mVexs[i].firstEdge;
 		if (p == NULL)
-			cout << "->" << "Null£¡";
+			cout << "->" << "Nullï¼";
 		while (p != NULL)
 		{
 			cout << "->" << mVexs[p->ivex].data;
