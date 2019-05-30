@@ -57,7 +57,7 @@ void dijkstra(adjacentMatrixGraph<T>& G, int s, int* path, T* dist)
 void printPath(int* path, int s, int t)
 {
 	if (path[t] == -1)
-		cout << "不能到达！ ";
+		cout << "涓嶈兘鍒拌揪";
 	else
 	{
 		Stack<int> A;
