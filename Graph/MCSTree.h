@@ -28,7 +28,7 @@ Graph_prac<T>::Graph_prac()
 
 template<class T>
 void Graph_prac<T>::WeightM()
-{//È¨Öµ¾ØÕó
+{//æƒå€¼çŸ©é˜µ
 	int i, j;
 	int count = 0;
 	Enode *p;	
@@ -53,7 +53,7 @@ void Graph_prac<T>::WeightM()
 
 template<class T>
 void Graph_prac<T>::Prim()
-{//U±íÊ¾Éú³ÉÊ÷¶¥µã¼¯£¬¸ù¾İÈ¨ÖµÒÀ´Î¼ÓÈëUÖĞ¶¥µã×îĞ¡È¨ÖµµÄ±ß
+{//Uè¡¨ç¤ºç”Ÿæˆæ ‘é¡¶ç‚¹é›†ï¼Œæ ¹æ®æƒå€¼ä¾æ¬¡åŠ å…¥Uä¸­é¡¶ç‚¹æœ€å°æƒå€¼çš„è¾¹
 	int *lowcost = new int[g->Vnum + 1];
 	int *closest = new int[g->Vnum + 1];
 	int i, j, k;
@@ -69,14 +69,14 @@ void Graph_prac<T>::Prim()
 		min = lowcost[i];
 		k = i;
 		for (j = 1; j<g->Vnum; j++)
-		{//±éÀúµÃµ½×îĞ¡È¨ÖµµÄ±ß
+		{//éå†å¾—åˆ°æœ€å°æƒå€¼çš„è¾¹
 			if (lowcost[j]<min)
 			{
 				min = lowcost[j];
 				k = j;
 			}
 		}
-		lowcost[k] = infinity;//infinity±íÊ¾ÒÑ¾­¼ÓÈë
+		lowcost[k] = infinity;//infinityè¡¨ç¤ºå·²ç»åŠ å…¥
 		cout << "(" << g->mVexs[closest[k]].data << "," << g->mVexs[k].data << ")" << " ";
 		int v1 = closest[k];
 		int v2 = k;
